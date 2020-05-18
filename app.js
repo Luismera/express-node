@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const server = express();
 let commerces = require('./data/commerces');
@@ -11,7 +13,7 @@ var md_upload = multipart({ uploadDir: './uploads' });
 var path = require('path');
 var fs = require('fs');
 
-const port = process.env.PORT || 3977;
+const port = process.env.PORT || 8080;
 
 // parse JSON (application/json content-type)
 server.use(body_parser.urlencoded({extended:false}));
@@ -45,4 +47,7 @@ server.get("/commerces", (req, res) => {
 
 server.listen(port, () => {
    console.log(`Server listening at ${port}`);
+   console.log('Press Ctrl+C to quit.');
 });
+
+module.exports = server;
